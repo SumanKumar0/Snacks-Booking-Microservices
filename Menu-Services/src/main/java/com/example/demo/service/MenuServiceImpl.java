@@ -23,7 +23,7 @@ MenuRepository menuRepository;
 		// TODO Auto-generated method stub
 		Menu menu=menuRepository.findById(id).orElse(null);
 		if(menu==null)
-			throw new MenuNotFoundException("Menu id"+id+" does not exist");
+			throw new MenuNotFoundException("Menu id "+id+" does not exist");
 		return menu;
 	}
 
