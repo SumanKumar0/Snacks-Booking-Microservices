@@ -1,5 +1,8 @@
 package com.example.demo.entity;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +13,7 @@ public class Menu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Nullable
 	private String name;
 	private String price;
 	public int getId() {
