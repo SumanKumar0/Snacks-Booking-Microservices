@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import org.antlr.v4.runtime.misc.NotNull;
+
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
@@ -10,12 +10,17 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Menu {
+	public Menu(String name, double i) {
+		super();
+		this.name = name;
+		this.price = i;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Nullable
 	private String name;
-	private String price;
+	private double price;
 	public int getId() {
 		return id;
 	}
@@ -28,10 +33,10 @@ public class Menu {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	public Menu() {

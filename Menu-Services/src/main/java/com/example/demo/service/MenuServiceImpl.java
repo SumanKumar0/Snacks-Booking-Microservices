@@ -1,6 +1,9 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,10 +11,22 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entity.Menu;
 import com.example.demo.exception.MenuNotFoundException;
 import com.example.demo.repo.MenuRepository;
+
+import jakarta.annotation.PostConstruct;
 @Service
 public class MenuServiceImpl implements MenuService {
 	@Autowired
 MenuRepository menuRepository;
+	@PostConstruct
+	public void initilizeMenuTable()
+	{
+		menuRepository.saveAll(Stream.of(
+								new Menu("Burger",20),
+								new Menu("Samosha",10),
+								new Menu("Kachori",20),
+								new Menu("PaniPuri",20)
+								).collect(Collectors.toList()));
+	}
 	@Override
 	public List<Menu> getMenu() {
 		// TODO Auto-generated method stub
